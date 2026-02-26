@@ -1,4 +1,4 @@
-import { cosineDistance, desc, gt, sql, asc, lt } from "drizzle-orm";
+import { cosineDistance, asc, lt } from "drizzle-orm";
 import { db } from "./db-config";
 import { documents } from "./db-schema";
 import { generateEmbedding } from "./embeddings";
@@ -31,9 +31,6 @@ export async function searchDocuments(
 	const distancesAndContent = similarDocuments.map((doc) => {
 		return { id: doc.id, content: doc.content, similarity: 1 - doc.distance };
 	});
-	console.log("***********************");
-	console.log("distances: ", distancesAndContent);
-	console.log("***********************");
 
 	return distancesAndContent;
 }

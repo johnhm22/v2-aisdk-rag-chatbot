@@ -2,11 +2,7 @@
 
 import React, { useState } from "react";
 import { processPdfFile } from "./actions";
-// import { Card, CardContent } from "@/components/ui/card";
-// import { Label } from "@/components/ui/label";
-// import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
-// import { Alert, AlertTitle } from "@/components/ui/alert";
 
 export default function PDFUpload() {
 	const [isLoading, setIsLoading] = useState(false);
@@ -73,10 +69,7 @@ export default function PDFUpload() {
 							</div>
 						)}
 						{message && (
-							<div
-								className="mt-5"
-								// variant={message.type === "error" ? "destructive" : "default"}
-							>
+							<div className="mt-5">
 								<span>{message.type === "error" ? "Error" : "Success"}</span>
 								{message.type === "success" && <span>`{message.text}`</span>}
 							</div>

@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RAG ChatBot Project
 
-## Getting Started
+A coding exercise designed to practise extending the response capabilities of AI to include details in a document, for example a company policy. Such information would not be available in the LLM.
 
-First, run the development server:
+The document is loaded into a supabase in the form of chunks and their corresponding embedding.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A ui page /upload permits the user to upload a document which is then subject to the above process. The function is in .app/upload/actions.ts contains the function to do this.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The ui page /chat provides a simple chat form to allow the user to conduct a back and forth conversation with the AI bot.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A tool, searchKnowledgeBase, has been written which the ai can use to provide answers to questions about the uploaded document. The tool references the function searchDocuments which will take a query, convert it into an embedding and then query the supabase database using cosine distance to return the most suitable response.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Observations
 
-## Learn More
+It does not always work as expected or hoped. I uploaded the minutes from a meeting. When questioned the ai didn't always correctly provide the names of the those who attended, the location, or the date of the meeting.
 
-To learn more about Next.js, take a look at the following resources:
+I changed models from ai to anthropic and saw slight improvements.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+There is more experimentation required.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tech Stack
 
-## Deploy on Vercel
+Next.js v16  
+Vercel ai-sdk v6
+Drizzle ORM
+Supabase
+Anthropic Claude Sonnet-4.5
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Reference
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Codevolution - ai-sdk v5 Full Course
+https://www.youtube.com/watch?v=BQmbuEClULY&t=15686s

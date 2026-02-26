@@ -8,7 +8,7 @@ import {
 	stepCountIs,
 } from "ai";
 import { anthropic } from "@ai-sdk/anthropic";
-import { openai } from "@ai-sdk/openai";
+// import { openai } from "@ai-sdk/openai";
 import { z } from "zod";
 import { searchDocuments } from "@/lib/search";
 
